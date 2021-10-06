@@ -7,10 +7,8 @@ export class AddProperty extends Component {
         super(props)
     
         this.state = {
-             id:'',
              address:'',
-             valuation:'',
-             hidden:''
+             valuation:''
         }
     }
 
