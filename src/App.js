@@ -1,14 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import './modal.css';
 import PropertyList from './pages/PropertyList';
-import AddProperty from './pages/AddProperty';
+import React, { Component } from 'react';  
+import Popup from './pages/Popup';  
+// import AddProperty from './pages/AddProperty';
 
-function App() {
-  return (
-    <div className="App">
-       <AddProperty></AddProperty>
-    </div>
-  );
-}
+class App extends Component {  
+  constructor(props){  
+  super(props);  
+  this.state = { showPopup: false };  
+  }
+  togglePopup() {  
+  this.setState({  
+       showPopup: !this.state.showPopup  
+  });  
+   }  
+  render() {  
+  return (  
+  <div className="App">
+     <PropertyList></PropertyList>
+  </div>  
+  );  
+  }  
+  }  
+  export default App;
 
-export default App;

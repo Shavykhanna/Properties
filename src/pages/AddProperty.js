@@ -20,11 +20,21 @@ export class AddProperty extends Component {
 
     handleSubmit =(e)=>{
         e.preventDefault()
-        console.log(e.target)
+        axios.get('https://take-home.hasura.app/api/rest/properties/add',{
+            headers:{
+                'x-hasura-user-id': 'B+wLEAoqARQ='
+            }
+        })
+        .then(response =>{
+            this.setState({
+                properties: response.data
+            })
+            console.log(response)
+        })
     }
     
     render() {
-        const{id, address, valuation, hidden} = this.state
+        const{address, valuation} = this.state
         return (
             <div>
                 <h1>Enter property details</h1>
@@ -36,7 +46,7 @@ export class AddProperty extends Component {
 
                     <div>
                         <label>Valuation</label>
-                        <input type='text' name='valuation' value={valuation} onChange={this.handleChange}></input>
+                        <input type='number' name='valuation' value={valuation} onChange={this.handleChange}></input>
                     </div>
                     <div>
                     <button type='submit'> Submit </button>
